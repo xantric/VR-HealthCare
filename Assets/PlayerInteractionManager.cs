@@ -32,7 +32,7 @@ public class PlayerInteractionManager : MonoBehaviour
 
             if (interactable != null)
             {
-                Debug.Log(hit.collider.gameObject.name);
+                //Debug.Log(hit.collider.gameObject.name);
                 currentInteractable = interactable;
                 if (interactionPrompt) interactionPrompt.SetActive(true);
                 return;
