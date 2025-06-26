@@ -9,7 +9,7 @@ public class UpdateVitalsData : MonoBehaviour
     public TextMeshPro bloodO2;
     public bool breathingMask = false;
     private int heartRateValue;
-
+    public steadyHeartRateSound heartRateSound;
     public void UpdateVitalData()
     {
         StartCoroutine(DataUpdater());
@@ -17,6 +17,13 @@ public class UpdateVitalsData : MonoBehaviour
     public void StopDataUpdation()
     {
         StopCoroutine(DataUpdater());
+    }
+    void Start()
+    {
+        if(heartRateSound != null)
+        {
+            heartRateSound.StartHeartRateSound();
+        }
     }
     public IEnumerator DataUpdater()
     {

@@ -6,7 +6,7 @@ public class test : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("hello");
-        Debug.Log(collision.gameObject.name);
+//        Debug.Log("hello");
+//        Debug.Log(collision.gameObject.name);
     }
 }
