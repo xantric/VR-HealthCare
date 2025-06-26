@@ -10,6 +10,7 @@ public class UpdateVitalsData : MonoBehaviour
     public bool breathingMask = false;
     private int heartRateValue;
     public steadyHeartRateSound heartRateSound;
+    public TextTimerController textTimerController;
     public void UpdateVitalData()
     {
         StartCoroutine(DataUpdater());
@@ -27,8 +28,9 @@ public class UpdateVitalsData : MonoBehaviour
     }
     public IEnumerator DataUpdater()
     {
-        while (true)
+        while (textTimerController.timer < textTimerController.DeathTime)
         {
+            Debug.Log("Timer: " + textTimerController.timer + " DeathTime: " + textTimerController.DeathTime);
             // Heart rate and blood oxygen level values are random for demonstration purposes :)
             if(breathingMask)
             {
@@ -44,5 +46,8 @@ public class UpdateVitalsData : MonoBehaviour
             }
             yield return new WaitForSeconds(1.2f);
         }
+        // After death, stop updating vitals
+        heartRate.text = "0";
+        bloodO2.text = "0";
     }
 }

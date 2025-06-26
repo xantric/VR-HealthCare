@@ -36,7 +36,7 @@ public class TextTimerController : MonoBehaviour
             {
                 timerText.text = "Death";
                 timerText.color = Color.red;
-                Debug.Log("Death");
+            //   Debug.Log("Death");
             }
         }
         else
