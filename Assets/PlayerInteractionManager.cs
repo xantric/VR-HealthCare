@@ -9,7 +9,7 @@ public class PlayerInteractionManager : MonoBehaviour
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private InputActionReference triggerButton; // Assign trigger input in Inspector
     [SerializeField] private GameObject interactionPrompt; // UI Prompt (optional)
-
+    public bool isInteractionRunning = false;
     private IInteractable currentInteractable;
 
     private void Awake()
@@ -22,8 +22,9 @@ public class PlayerInteractionManager : MonoBehaviour
         if (currentInteractable != null)
         {
             //sDebug.Log("helooooo");
+            isInteractionRunning = true;
             currentInteractable.Interact();
-            interactionPrompt.SetActive(false);
+            
         }
     }
     private void Update()
@@ -38,7 +39,7 @@ public class PlayerInteractionManager : MonoBehaviour
         {
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
 
-            if (interactable != null)
+            if (interactable != null && !isInteractionRunning)
             {
                 //Debug.Log(hit.collider.gameObject.name);
                 currentInteractable = interactable;
@@ -51,6 +52,17 @@ public class PlayerInteractionManager : MonoBehaviour
         // No interactable found, hide prompt
         currentInteractable = null;
         if (interactionPrompt) interactionPrompt.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        triggerButton.action.Enable();
+        triggerButton.action.performed += InteractionPerform;
+    }
+
+    private void OnDisable()
+    {
+        triggerButton.action.performed -= InteractionPerform;
+        triggerButton.action.Disable();
     }
 
 
