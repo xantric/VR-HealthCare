@@ -349,7 +349,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartRateSound: {fileID: 5192420}
   heartRateClip: {fileID: 8300000, guid: 82aefb00e2bc54407be10db265f5624f, type: 3}
+  deadClip: {fileID: 8300000, guid: 89e4aa91b86464f678c7759b8f41dcf6, type: 3}
   isPlaying: 0
+  textTimerController: {fileID: 528149370}
 --- !u!1 &26023329
 GameObject:
   m_ObjectHideFlags: 0
@@ -6248,8 +6250,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 528149371}
-  beepAudio: {fileID: 0}
+  timer: 300
   injectionSafetyCheck: {fileID: 840093234}
+  DeathTime: 720
 --- !u!114 &528149371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20207,6 +20210,7 @@ GameObject:
   - component: {fileID: 4220274215702629924}
   - component: {fileID: 3085401538188683782}
   - component: {fileID: 8881028038753063771}
+  - component: {fileID: 8881028038753063772}
   m_Layer: 5
   m_Name: Scroll Text
   m_TagString: Untagged
@@ -21765,6 +21769,102 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: I was working in the field..... I think something Bit on my leg. I am starting
     to have weakness in my limbs and difficulty in speaking.
+--- !u!82 &8881028038753063772
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5140844393205771735}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2fa6e42257a7f4086bd062c24808b62d, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!224 &9204554793287944842
 RectTransform:
   m_ObjectHideFlags: 0

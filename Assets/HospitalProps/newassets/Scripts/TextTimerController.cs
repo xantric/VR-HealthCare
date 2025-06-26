@@ -4,12 +4,9 @@ using TMPro;
 public class TextTimerController : MonoBehaviour
 {
     public TextMeshPro timerText;  // Assign your TextMeshProUGUI in Inspector
-    public AudioSource beepAudio;      // Assign an AudioSource with a beep clip
-    private float timer = 300f;        // Start from 5 minutes (300 seconds)
-    private bool isBeeping = false;
-    private float nextBeepTime = 0f;
+    public float timer = 300f;        // Start from 5 minutes (300 seconds)
     public InjectionSafetyCheck injectionSafetyCheck; // Reference to the InjectionSafetyCheck script
-
+    public float DeathTime = 720f; // 12 minutes in seconds
     void Update()
     {
         if (injectionSafetyCheck != null && !injectionSafetyCheck.isSafe)
@@ -19,7 +16,7 @@ public class TextTimerController : MonoBehaviour
             timer += Time.deltaTime;
 
             // Show timer in mm:ss format until "Death"
-            if (timer < 720f)
+            if (timer < DeathTime)
             {
                 int minutes = Mathf.FloorToInt(timer / 60f);
                 int seconds = Mathf.FloorToInt(timer % 60f);
@@ -33,28 +30,10 @@ public class TextTimerController : MonoBehaviour
                 timerText.color = Color.Lerp(Color.green, Color.red, t);
             }
 
-            // Beep between 10 to 12 minutes
-            if (timer >= 600f && timer < 720f)
+
+            // After 12 minutes: show "Death" 
+            if (timer >= 720f)
             {
-                if (!isBeeping)
-                {
-                    isBeeping = true;
-                    nextBeepTime = Time.time;
-                }
-
-                if (Time.time >= nextBeepTime)
-                {
-                    if (beepAudio != null)
-                        beepAudio.Play();
-
-                    nextBeepTime = Time.time + 1f;
-                }
-            }
-
-            // After 12 minutes: show "Death" and stop beeping
-            if (timer >= 720f && isBeeping)
-            {
-                isBeeping = false;
                 timerText.text = "Death";
                 timerText.color = Color.red;
                 Debug.Log("Death");
