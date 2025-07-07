@@ -9,7 +9,7 @@ public class PatientInteractor : MonoBehaviour, IInteractable
     public PlayerInteractionManager playerInteractionManager;
     public void Interact()
     {
-        
+        ActionLogger.Instance.LogAction("Interacted with the patient");
         StartCoroutine(Typing());
     }
     public IEnumerator Typing()
