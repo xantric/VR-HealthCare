@@ -40,6 +40,7 @@ public class ColorToggleOnInjection : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        ///Debug.LogWarning("Hello");
         GameObject other = collision.gameObject;
 
         if (other == bottle1 || other == bottle2 || other == bottle3)
